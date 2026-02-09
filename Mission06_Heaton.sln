@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mission06_Heaton", "Mission06_Heaton\Mission06_Heaton.csproj", "{DE47D2BD-5A3F-48B7-9E82-E82DCDFE062A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE47D2BD-5A3F-48B7-9E82-E82DCDFE062A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE47D2BD-5A3F-48B7-9E82-E82DCDFE062A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE47D2BD-5A3F-48B7-9E82-E82DCDFE062A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE47D2BD-5A3F-48B7-9E82-E82DCDFE062A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
