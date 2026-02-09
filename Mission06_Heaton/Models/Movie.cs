@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace Mission06_Heaton.Models;
 
-public class AddMovie
+public class Movie
 {
     [Key]
     [Required]
@@ -19,7 +19,7 @@ public class AddMovie
     
     //Not Required
     public bool? Edited { get; set; }
-    public string LentTo { get; set; }
+    public string? LentTo { get; set; }
     [MaxLength(25)]
-    public string Notes { get; set; }
+    public string? Notes { get; set; }
 }
