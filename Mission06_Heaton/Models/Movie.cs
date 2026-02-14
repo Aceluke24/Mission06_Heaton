@@ -13,7 +13,9 @@ public class Movie
     [Required]
     public string Year { get; set; }
     [Required]
-    public string Director { get; set; }
+    public string DirFirstName { get; set; }
+    [Required]
+    public string DirLastName { get; set; }
     [Required]
     public string Rating { get; set; }
     

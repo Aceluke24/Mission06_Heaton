@@ -26,7 +26,11 @@ namespace Mission06_Heaton.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Director")
+                    b.Property<string>("DirFirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DirLastName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
