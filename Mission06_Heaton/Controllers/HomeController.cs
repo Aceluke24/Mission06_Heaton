@@ -27,8 +27,9 @@ public class HomeController : Controller
     {
         return View();
     }
-
-
+    
+    
+    //Add Movie
     [HttpGet]
     public IActionResult AddMovie()
     {
@@ -70,5 +71,88 @@ public class HomeController : Controller
             return View(response);
         }
     }
+    
+    
+    //See Movie List
+    public IActionResult MovieList()
+    {
+        // Get all movies and include the category for display
+        var movies = _context.Movies
+            .OrderBy(m => m.Title)
+            .ToList();
+
+        return View(movies);
+    }
+
+    
+    //Edit Movie
+    [HttpGet]
+    public IActionResult EditMovie(int id)
+    {
+        var movie = _context.Movies
+            .SingleOrDefault(m => m.MovieId == id);
+
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        ViewBag.Categories = _context.Categories
+            .OrderBy(c => c.CategoryName)
+            .ToList();
+
+        return View("AddMovie", movie); // reuse AddMovie view
+    }
+
+    [HttpPost]
+    public IActionResult EditMovie(Movie updatedMovie)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Update(updatedMovie);
+            _context.SaveChanges();
+            return RedirectToAction("MovieList");
+        }
+
+        // Validation failed, repopulate dropdown
+        ViewBag.Categories = _context.Categories
+            .OrderBy(c => c.CategoryName)
+            .ToList();
+
+        return View("AddMovie", updatedMovie);
+    }
+
+
+    //Delete Movie
+    [HttpGet]
+    public IActionResult DeleteMovie(int id)
+    {
+        var movie = _context.Movies
+            .SingleOrDefault(m => m.MovieId == id);
+
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        return View(movie);
+    }
+
+    [HttpPost]
+    public IActionResult DeleteMovieConfirmed(int id)
+    {
+        var movie = _context.Movies
+            .SingleOrDefault(m => m.MovieId == id);
+
+        if (movie != null)
+        {
+            _context.Movies.Remove(movie);
+            _context.SaveChanges();
+        }
+
+        return RedirectToAction("MovieList");
+    }
+
+
     
 }

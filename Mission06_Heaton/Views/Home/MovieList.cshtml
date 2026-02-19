@@ -1,0 +1,38 @@
+
+@{
+    
+}
+
+@model IEnumerable<Mission06_Heaton.Models.Movie>
+
+<h2>My Movie Collection</h2>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Year</th>
+        <th>Director</th>
+        <th>Rating</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <td>@movie.Title</td>
+            <td>@movie.Category?.CategoryName</td>
+            <td>@movie.Year</td>
+            <td>@movie.Director</td>
+            <td>@movie.Rating</td>
+            <td>
+                <a class="btn btn-sm btn-primary" asp-action="EditMovie" asp-route-id="@movie.MovieId">Edit</a>
+                <a class="btn btn-sm btn-danger" asp-action="DeleteMovie" asp-route-id="@movie.MovieId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
