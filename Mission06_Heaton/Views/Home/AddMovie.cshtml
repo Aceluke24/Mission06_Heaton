@@ -2,74 +2,123 @@
     ViewData["Title"] = "Add Movie";
 }
 
-<h2 class="mb-4">Add Movie to Collection</h2>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
 
-<form method="post">
+        <!-- Colored Header -->
+        <div class="card-header bg-dark text-white">
+            <h3 class="mb-0">Add Movie to Collection</h3>
+        </div>
 
-    <!-- Category (Required) -->
-    <div class="mb-3">
-        <label class="form-label">Category</label>
-        <input type="text" name="Category" class="form-control" required />
+        <div class="card-body bg-light">
+
+            <form method="post">
+
+                <!-- MOVIE INFO -->
+                <h5 class="text-primary mb-3">Movie Information</h5>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Category</label>
+                        <select name="Category" class="form-select" required>
+                            <option value="">Select Category</option>
+                            <option>Miscellaneous</option>
+                            <option>Drama</option>
+                            <option>Television</option>
+                            <option>Horror/Suspense</option>
+                            <option>Comedy</option>
+                            <option>Family</option>
+                            <option>Action/Adventure</option>
+                            <option>VHS</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Title</label>
+                        <input type="text" name="Title" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-semibold">Year</label>
+                        <input type="number" name="Year" class="form-control" required />
+                        <div class="form-text">Must be 1888 or later</div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-semibold">Director Name</label>
+                        <input type="text" name="Director" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-semibold">Rating</label>
+                        <select name="Rating" class="form-select" required>
+                            <option value="">Select Rating</option>
+                            <option>G</option>
+                            <option>PG</option>
+                            <option>PG-13</option>
+                            <option>R</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <!-- DETAILS -->
+                <h5 class="text-success mb-3">Details</h5>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Edited</label>
+                        <select name="Edited" class="form-select">
+                            <option value="">Select Option</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Copied To Plex</label>
+                        <select name="CopiedToPlex" class="form-select">
+                            <option value="">Select Option</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <!-- OPTIONAL -->
+                <h5 class="text-secondary mb-3">Optional Information</h5>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">
+                            Lent To <span class="text-muted">(Optional)</span>
+                        </label>
+                        <input type="text" name="LentTo" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">
+                            Notes <span class="text-muted">(Optional)</span>
+                        </label>
+                        <input type="text" name="Notes" class="form-control" maxlength="25" />
+                        <div class="form-text">Max 25 characters</div>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-end">
+                    <button type="submit" class="btn btn-primary px-4">
+                        Add Movie
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
     </div>
-
-    <!-- Title (Required) -->
-    <div class="mb-3">
-        <label class="form-label">Title</label>
-        <input type="text" name="Title" class="form-control" required />
-    </div>
-
-    <!-- Year (Required) -->
-    <div class="mb-3">
-        <label class="form-label">Year</label>
-        <input type="number" name="Year" class="form-control" required />
-    </div>
-
-    <!-- Director (Required) -->
-    <div class="mb-3">
-        <label class="form-label">Director First Name</label>
-        <input type="text" name="DirFirstName" class="form-control" required />
-    </div>
-    
-    <div class="mb-3">
-        <label class="form-label">Director Last Name</label>
-        <input type="text" name="DirLastName" class="form-control" required />
-    </div>
-
-    <!-- Rating Dropdown (Required) -->
-    <div class="mb-3">
-        <label class="form-label">Rating</label>
-        <select name="Rating" class="form-select" required>
-            <option value="">Select Rating</option>
-            <option>G</option>
-            <option>PG</option>
-            <option>PG-13</option>
-            <option>R</option>
-        </select>
-    </div>
-
-    <!-- Edited Yes/No (NOT Required) -->
-    <div class="mb-3">
-        <label class="form-label">Edited</label>
-        <select name="Edited" class="form-select">
-            <option value="">Select Option</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select>
-    </div>
-
-    <!-- Lent To (NOT Required) -->
-    <div class="mb-3">
-        <label class="form-label">Lent To</label>
-        <input type="text" name="LentTo" class="form-control" />
-    </div>
-
-    <!-- Notes (NOT Required, Max 25 chars) -->
-    <div class="mb-3">
-        <label class="form-label">Notes</label>
-        <input type="text" name="Notes" class="form-control" maxlength="25" />
-        <div class="form-text">Max 25 characters</div>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Add Movie</button>
-
-</form>
+</div>
