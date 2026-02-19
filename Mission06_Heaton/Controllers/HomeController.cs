@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Mission06_Heaton.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 
 
@@ -78,6 +79,7 @@ public class HomeController : Controller
     {
         // Get all movies and include the category for display
         var movies = _context.Movies
+            .Include(m => m.Category)
             .OrderBy(m => m.Title)
             .ToList();
 
@@ -139,10 +141,10 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult DeleteMovieConfirmed(int id)
+    public IActionResult DeleteMovieConfirmed(int MovieId)
     {
         var movie = _context.Movies
-            .SingleOrDefault(m => m.MovieId == id);
+            .SingleOrDefault(m => m.MovieId == MovieId);
 
         if (movie != null)
         {

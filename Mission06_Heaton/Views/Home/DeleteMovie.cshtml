@@ -4,6 +4,7 @@
 
 <p>Are you sure you want to delete "<strong>@Model.Title</strong>"?</p>
 
+@* Confirmation for a deletion *@
 <form asp-action="DeleteMovieConfirmed" method="post">
     <input type="hidden" asp-for="MovieId" />
     <button type="submit" class="btn btn-danger">Delete</button>

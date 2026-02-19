@@ -1,6 +1,10 @@
+@model Movie
 @{
     ViewData["Title"] = "Add Movie";
 }
+
+
+@* Used to Add/Edit a movie *@
 
 <div class="container mt-5">
     <div class="card shadow-lg border-0">
@@ -12,8 +16,9 @@
 
         <div class="card-body bg-light">
 
-            <form method="post">
-                
+            <form method="post" asp-action="@(Model.MovieId == 0 ? "AddMovie" : "EditMovie")">
+                <input type="hidden" asp-for="MovieId" />
+
                 @if (ViewBag.Message != null)
                 {
                     <div class="alert alert-success">
@@ -27,33 +32,38 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">Category</label>
-                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories" required>
+                        <select asp-for="CategoryId" class="form-select" required>
                             <option value="">Select Category</option>
+                            @foreach (var cat in ViewBag.Categories)
+                            {
+                                <option value="@cat.CategoryId">@cat.CategoryName</option>
+                            }
                         </select>
                     </div>
 
 
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">Title</label>
-                        <input type="text" name="Title" class="form-control" required/>
+                        <input type="text" asp-for="Title" class="form-control" required/>
                     </div>
                 </div>
+
 
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label class="form-label fw-semibold">Year</label>
-                        <input type="number" name="Year" class="form-control" required/>
+                        <input type="number" asp-for="Year" class="form-control" required/>
                         <div class="form-text">Must be 1888 or later</div>
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label class="form-label fw-semibold">Director Name</label>
-                        <input type="text" name="Director" class="form-control" required/>
+                        <input type="text" asp-for="Director" class="form-control" required/>
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label class="form-label fw-semibold">Rating</label>
-                        <select name="Rating" class="form-select" required>
+                        <select asp-for="Rating" class="form-select" required>
                             <option value="">Select Rating</option>
                             <option>G</option>
                             <option>PG</option>
@@ -71,8 +81,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">Edited</label>
-                        <select name="Edited" class="form-select">
-                            <option value="">Select Option</option>
+                        <select asp-for="Edited" class="form-select">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
@@ -80,8 +89,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">Copied To Plex</label>
-                        <select name="CopiedToPlex" class="form-select">
-                            <option value="">Select Option</option>
+                        <select asp-for="CopiedToPlex" class="form-select">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
@@ -90,7 +98,7 @@
 
                 <hr class="my-4"/>
 
-                <!-- OPTIONAL -->
+                <!-- Optional Fields -->
                 <h5 class="text-secondary mb-3">Optional Information</h5>
 
                 <div class="row">
@@ -98,18 +106,19 @@
                         <label class="form-label fw-semibold">
                             Lent To <span class="text-muted">(Optional)</span>
                         </label>
-                        <input type="text" name="LentTo" class="form-control"/>
+                        <input type="text" asp-for="LentTo" class="form-control"/>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
                             Notes <span class="text-muted">(Optional)</span>
                         </label>
-                        <input type="text" name="Notes" class="form-control" maxlength="25"/>
+                        <input type="text" asp-for="Notes" class="form-control" maxlength="25"/>
                         <div class="form-text">Max 25 characters</div>
                     </div>
                 </div>
 
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="mt-4 text-end">
                     <button type="submit" class="btn btn-primary px-4">
                         Add Movie

@@ -1,10 +1,10 @@
-
 @{
     
 }
 
 @model IEnumerable<Mission06_Heaton.Models.Movie>
 
+@* Lists all the movies and information about them *@
 <h2>My Movie Collection</h2>
 
 <table class="table table-striped">
@@ -15,6 +15,10 @@
         <th>Year</th>
         <th>Director</th>
         <th>Rating</th>
+        <th>Edited</th>
+        <th>Copied To Plex</th>
+        <th>Lent To</th>
+        <th>Notes</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -27,6 +31,10 @@
             <td>@movie.Year</td>
             <td>@movie.Director</td>
             <td>@movie.Rating</td>
+            <td>@(movie.Edited ? "Yes" : "No")</td>
+            <td>@(movie.CopiedToPlex ? "Yes" : "No")</td>
+            <td>@movie.LentTo</td>
+            <td>@movie.Notes</td>
             <td>
                 <a class="btn btn-sm btn-primary" asp-action="EditMovie" asp-route-id="@movie.MovieId">Edit</a>
                 <a class="btn btn-sm btn-danger" asp-action="DeleteMovie" asp-route-id="@movie.MovieId">Delete</a>
