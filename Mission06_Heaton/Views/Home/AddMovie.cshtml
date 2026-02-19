@@ -13,6 +13,13 @@
         <div class="card-body bg-light">
 
             <form method="post">
+                
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-success">
+                        @ViewBag.Message
+                    </div>
+                }
 
                 <!-- MOVIE INFO -->
                 <h5 class="text-primary mb-3">Movie Information</h5>
@@ -20,36 +27,28 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">Category</label>
-                        <select name="Category" class="form-select" required>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories" required>
                             <option value="">Select Category</option>
-                            <option>Miscellaneous</option>
-                            <option>Drama</option>
-                            <option>Television</option>
-                            <option>Horror/Suspense</option>
-                            <option>Comedy</option>
-                            <option>Family</option>
-                            <option>Action/Adventure</option>
-                            <option>VHS</option>
                         </select>
                     </div>
 
 
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">Title</label>
-                        <input type="text" name="Title" class="form-control" required />
+                        <input type="text" name="Title" class="form-control" required/>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label class="form-label fw-semibold">Year</label>
-                        <input type="number" name="Year" class="form-control" required />
+                        <input type="number" name="Year" class="form-control" required/>
                         <div class="form-text">Must be 1888 or later</div>
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label class="form-label fw-semibold">Director Name</label>
-                        <input type="text" name="Director" class="form-control" required />
+                        <input type="text" name="Director" class="form-control" required/>
                     </div>
 
                     <div class="col-md-4 mb-3">
@@ -64,7 +63,7 @@
                     </div>
                 </div>
 
-                <hr class="my-4" />
+                <hr class="my-4"/>
 
                 <!-- DETAILS -->
                 <h5 class="text-success mb-3">Details</h5>
@@ -89,7 +88,7 @@
                     </div>
                 </div>
 
-                <hr class="my-4" />
+                <hr class="my-4"/>
 
                 <!-- OPTIONAL -->
                 <h5 class="text-secondary mb-3">Optional Information</h5>
@@ -99,14 +98,14 @@
                         <label class="form-label fw-semibold">
                             Lent To <span class="text-muted">(Optional)</span>
                         </label>
-                        <input type="text" name="LentTo" class="form-control" />
+                        <input type="text" name="LentTo" class="form-control"/>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
                             Notes <span class="text-muted">(Optional)</span>
                         </label>
-                        <input type="text" name="Notes" class="form-control" maxlength="25" />
+                        <input type="text" name="Notes" class="form-control" maxlength="25"/>
                         <div class="form-text">Max 25 characters</div>
                     </div>
                 </div>
